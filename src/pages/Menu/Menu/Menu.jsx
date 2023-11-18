@@ -12,11 +12,11 @@ import MenuCategory from "../MenuCategory/MenuCategory";
 
 const Menu = () => {
     const [menu] = useMenu();
-    const offered = menu.filter(item=> item.category === 'offered')
-    const desserts = menu.filter(item=> item.category === 'dessert')
-    const pizza = menu.filter(item=> item.category === 'pizza')
-    const salads = menu.filter(item=> item.category === 'salad')
-    const soups = menu.filter(item=> item.category === 'soup')
+    const offered = menu.filter(item=> item.category === 'offered');
+    const desserts = menu.filter(item=> item.category === 'dessert');
+    const pizza = menu.filter(item=> item.category === 'pizza');
+    const salad = menu.filter(item=> item.category === 'salad');
+    const soup = menu.filter(item=> item.category === 'soup');
     return (
         <div>
             <Helmet>
@@ -41,13 +41,13 @@ const Menu = () => {
             ></MenuCategory>
             {/* Salads menu items */}
             <MenuCategory
-            items={salads}
+            items={salad}
             title={"Salads"}
             img={saladImg}
             ></MenuCategory>
             {/* Soups menu items */}
             <MenuCategory
-            items={soups}
+            items={soup}
             title={"Soups"}
             img={soupImg}
             ></MenuCategory>
