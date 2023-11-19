@@ -4,6 +4,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import signInImg from '../../assets/others/authentication2.png'
 import bgImg from '../../assets/others/authentication.png';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const captchaRef = useRef(null);
@@ -39,6 +40,10 @@ const Login = () => {
     }
 
   return (
+    <>
+    <Helmet>
+        <title>Bistro Boss | Login</title>
+    </Helmet>
     <div className="hero min-h-screen" style={{backgroundImage: `url(${bgImg})`}}>
       <div className="hero-content flex-col md:flex-row shadow-xl shadow-gray-400">
         <div className="text-center md:w-1/2 lg:text-left">
@@ -85,7 +90,7 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs border-none justify-start uppercase'>Validate</button>
+              <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs w-1/4 border-orange-400 justify-start uppercase'>Validate</button>
               <label className="label">
               <LoadCanvasTemplate />
               </label>
@@ -98,6 +103,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

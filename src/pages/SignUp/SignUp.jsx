@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
 import signUpImg from '../../assets/others/authentication2.png'
 import bgImg from '../../assets/others/authentication.png'
+import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
 
 const SignUp = () => {
-  return (
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const {createUser} = useContext(AuthContext);
+
+    const onSubmit = data => {
+        console.log(data);
+        createUser(data.email, data.password)
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+    };
+
+    return (
+    <>
+    <Helmet>
+        <title>Bistro Boss | Sign Up</title>
+    </Helmet>
     <div className="hero min-h-screen" style={{backgroundImage: `url(${bgImg})`}}>
       <div className="hero-content flex-col lg:flex-row-reverse shadow-xl shadow-gray-400">
         <div className="text-center md:w-1/2 lg:text-left">
@@ -11,18 +34,19 @@ const SignUp = () => {
         </div>
         <div className="card md:w-1/2 max-w-sm ">
         <h1 className="text-5xl text-center pt-6 font-bold">Sign Up</h1>
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
+                {...register("name", {required: true})}
                 name="name"
                 placeholder="Enter your name"
                 className="input input-bordered"
-                required
               />
+              {errors.name && <span className="text-red-600">Name is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -30,11 +54,12 @@ const SignUp = () => {
               </label>
               <input
                 type="email"
+                {...register("email", {required: true})}
                 name="email"
                 placeholder="Enter your email"
                 className="input input-bordered"
-                required
               />
+              {errors.email && <span className="text-red-600">Email is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -42,11 +67,20 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
+                {...register("password", {
+                    required: true, 
+                    minLength: 6, 
+                    maxLength: 20,
+                    pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z])/
+                })}
                 name="password"
                 placeholder="Enter your password"
                 className="input input-bordered"
-                required
               />
+              {errors.password?.type === 'required' && <span className="text-red-600">Password is required</span>}
+              {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
+              {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be less than 20 characters</span>}
+              {errors.password?.type === 'pattern' && <span className="text-red-600">Password must have one uppercase, one lower case, one number and one specials character</span>}
             </div>
             <div className="form-control mt-6">
             <input className="btn bg-[#D1A054B3] text-white text-xl font-extrabold " type="submit" value="Sign Up" />
@@ -56,6 +90,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
