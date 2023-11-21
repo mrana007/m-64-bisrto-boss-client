@@ -10,7 +10,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
-    const [cart] = useCart();
+  const [cart] = useCart();
   return (
     <div className="flex mt-10 p-2">
       {/* dashboard side bar */}
@@ -46,16 +46,16 @@ const Dashboard = () => {
               My Booking
             </NavLink>
           </li>
-        <div className="divider"></div>
-        <li>
+          <div className="divider"></div>
+          <li>
             <NavLink to="/">
-              <FaHome></FaHome>
+              <FaHome className="text-xl"></FaHome>
               Home
             </NavLink>
           </li>
-        <li>
+          <li>
             <NavLink to="/order/salad">
-              <FaSearch></FaSearch>
+              <FaSearch className="text-xl"></FaSearch>
               Menu
             </NavLink>
           </li>

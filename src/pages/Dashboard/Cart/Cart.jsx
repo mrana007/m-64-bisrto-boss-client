@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
+//   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const totalPrice = parseFloat(cart.reduce((total, item) => total + item.price, 0)).toFixed(2);
   const axiosSecure = useAxiosSecure();
 
