@@ -10,6 +10,7 @@ import signInImg from "../../assets/others/authentication2.png";
 import bgImg from "../../assets/others/authentication.png";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -68,7 +69,7 @@ const Login = () => {
         <title>Bistro Boss | Login</title>
       </Helmet>
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen md:pb-10"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="hero-content flex-col md:flex-row shadow-xl shadow-gray-400">
@@ -76,7 +77,7 @@ const Login = () => {
             <img src={signInImg} alt="" />
           </div>
           <div className="card md:w-1/2 max-w-sm">
-            <h1 className="text-5xl text-center pt-6 font-bold">Login</h1>
+            <h1 className="text-5xl text-center pt-3 font-bold">Login</h1>
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -120,7 +121,7 @@ const Login = () => {
                   <LoadCanvasTemplate />
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-3">
                 <input
                   disabled={disabled}
                   className="btn bg-[#D1A054B3] text-white text-xl font-extrabold "
@@ -129,14 +130,18 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p className="text-center pb-6 text-[#D1A054] text-xl font-medium">
+            <p className="text-center text-[#D1A054] text-xl font-medium">
               <small>
-                New here?{" "}
+                New here? 
                 <Link to="/signup" className="font-extrabold">
-                  Create a New Account
+                   Create a New Account
                 </Link>
               </small>
             </p>
+            <div className="my-2 text-center text-xl font-medium">
+            <p className="mb-2">Or Sign in with</p>
+            <SocialLogin></SocialLogin>
+            </div>
           </div>
         </div>
       </div>

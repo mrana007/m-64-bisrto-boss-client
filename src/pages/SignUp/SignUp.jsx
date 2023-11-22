@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic()
@@ -52,7 +53,7 @@ const SignUp = () => {
         <title>Bistro Boss | Sign Up</title>
       </Helmet>
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen md:pb-10"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="hero-content flex-col lg:flex-row-reverse shadow-xl shadow-gray-400">
@@ -60,7 +61,7 @@ const SignUp = () => {
             <img src={signUpImg} alt="" />
           </div>
           <div className="card md:w-1/2 max-w-sm ">
-            <h1 className="text-5xl text-center pt-6 font-bold">Sign Up</h1>
+            <h1 className="text-5xl text-center pt-3 font-bold">Sign Up</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -140,7 +141,7 @@ const SignUp = () => {
                   </span>
                 )}
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-3">
                 <input
                   className="btn bg-[#D1A054B3] text-white text-xl font-extrabold "
                   type="submit"
@@ -148,14 +149,18 @@ const SignUp = () => {
                 />
               </div>
             </form>
-            <p className="text-center pb-6 text-[#D1A054] text-xl font-medium">
+            <p className="text-center text-[#D1A054] text-xl font-medium">
               <small>
-                Already registered?{" "}
+                Already registered?
                 <Link to="/login" className="font-extrabold">
                   Go to Login
                 </Link>
               </small>
             </p>
+            <div className="my-2 text-center text-xl font-medium">
+            <p className="mb-2">Or Sign up with</p>
+            <SocialLogin></SocialLogin>
+            </div>
           </div>
         </div>
       </div>
