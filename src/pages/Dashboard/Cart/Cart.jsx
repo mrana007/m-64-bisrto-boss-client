@@ -43,7 +43,7 @@ const Cart = () => {
           Pay
         </button>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-t-2xl">
         <table className="table w-full">
           {/* head */}
           <thead className="bg-[#D1A054] text-white">
@@ -73,8 +73,7 @@ const Cart = () => {
                 <th>
                   <button
                     onClick={() => handleDelete(item._id)}
-                    className="btn btn-ghost btn-lg"
-                  >
+                    className="btn btn-ghost btn-lg"  >
                     <FaTrashAlt className="text-red-500"></FaTrashAlt>
                   </button>
                 </th>
